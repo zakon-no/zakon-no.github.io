@@ -1,36 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Отказ от юридической оферты — Филин А.С., юрист</title>
-<meta name="description" content="Информация на сайте юриста Филина А.С. не является публичной офертой. Условия оказания услуг определяются договором.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://zakon-no.github.io/afilin/offer.html">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body>
+---
+layout: default
+title: "Отказ от юридической оферты — Филин А.С., юрист"
+description: "Информация на сайте юриста Филина А.С. не является публичной офертой. Условия оказания услуг определяются договором оказания юридических услуг."
+---
 
-<a class="skip-link" href="#main">Перейти к основному содержанию</a>
-
-<header class="header">
-  <div class="container header__inner">
-    <a class="brand" href="index.html">
-      <span class="brand__mark" aria-hidden="true">АФ</span>
-      <span class="brand__text">
-        <span class="brand__name">Филин А.С. — юрист</span>
-        <span class="brand__caption">Юридическая помощь бизнесу и гражданам</span>
-      </span>
-    </a>
-    <div class="header__aside">
-      <a class="header__phone" href="tel:+7_______">+7 (___) ___-__</a>
-      <a class="btn btn--primary btn--sm" href="index.html#contacts">Написать</a>
-    </div>
-  </div>
-</header>
-
-<main id="main" class="legal">
+<section class="legal">
   <div class="container">
     <h1 class="legal__title">Отказ от юридической оферты</h1>
     <p class="legal__updated">Редакция от 30 сентября 2026 года</p>
@@ -57,26 +31,6 @@
       <p>Вопросы об условиях оказания услуг и настоящем документе направляйте через раздел «Контакты» на сайте.</p>
     </div>
 
-    <p class="legal__back"><a href="index.html">← Вернуться на главную страницу</a></p>
+    <p class="legal__back"><a href="{{ '/' | relative_url }}">← Вернуться на главную страницу</a></p>
   </div>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="footer__legal">
-      <p class="footer__disclaimer">Информация, размещённая на сайте, не является публичной офертой и не может рассматриваться как заключение какого-либо договора. Сайт носит исключительно информационный характер и не является рекламой.</p>
-      <p class="footer__links">
-        <a href="index.html">Главная</a>
-        <span aria-hidden="true">·</span>
-        <a href="privacy.html">Политика конфиденциальности</a>
-        <span aria-hidden="true">·</span>
-        <a href="offer.html">Отказ от юридической оферты</a>
-      </p>
-      <p class="footer__copy">&copy; <span id="year">2026</span> ИП Филин А.С. Все права защищены.</p>
-    </div>
-  </div>
-</footer>
-
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+</section>

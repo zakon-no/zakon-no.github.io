@@ -144,6 +144,11 @@ ul, ol { margin: 0; padding: 0; }
   border-top: 1px solid var(--line);
 }
 
+.section--first {
+  border-top: 0;
+  padding-top: 72px;
+}
+
 .section--alt {
   background: var(--bg-alt);
 }
@@ -373,26 +378,25 @@ ul, ol { margin: 0; padding: 0; }
    -------------------------------------------------------------------------- */
 
 .hero {
-  padding: 76px 0 80px;
-  background: var(--bg);
+  padding: 72px 0 76px;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
-.hero__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
-  gap: 60px;
-  align-items: start;
+.hero__content {
+  max-width: 880px;
 }
 
 .hero__title {
-  font-size: clamp(32px, 4.4vw, 48px);
+  font-size: clamp(30px, 4vw, 44px);
   margin: 0 0 22px;
 }
 
 .hero__lead {
   font-size: 18px;
   color: var(--text-muted);
-  max-width: 42em;
+  max-width: 44em;
   margin-bottom: 28px;
 }
 
@@ -425,50 +429,6 @@ ul, ol { margin: 0; padding: 0; }
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-}
-
-.facts {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg-alt);
-  padding: 6px 26px 24px;
-}
-
-.facts__list {
-  margin: 0;
-}
-
-.facts__row {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.facts__row:last-child { border-bottom: 0; }
-
-.facts__row dt {
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  flex-shrink: 0;
-}
-
-.facts__row dd {
-  margin: 0;
-  font-size: 15px;
-  text-align: right;
-  color: var(--text);
-}
-
-.facts__note {
-  margin: 20px 0 0;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-  font-size: 13.5px;
-  color: var(--text-muted);
 }
 
 /* --------------------------------------------------------------------------
@@ -1016,12 +976,9 @@ ul, ol { margin: 0; padding: 0; }
 
 @media (max-width: 960px) {
   .section { padding: 64px 0; }
+  .section--first { padding-top: 52px; }
 
-  .hero { padding: 56px 0 64px; }
-  .hero__inner {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
-  }
+  .hero { padding: 52px 0 60px; }
 
   .header__aside { margin-left: auto; }
 
@@ -1082,15 +1039,6 @@ ul, ol { margin: 0; padding: 0; }
     grid-template-columns: minmax(0, 1fr);
     gap: 2px;
   }
-
-  .facts { padding: 4px 20px 20px; }
-
-  .facts__row {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .facts__row dd { text-align: left; }
 
   .footer__top { flex-direction: column; gap: 28px; }
 }

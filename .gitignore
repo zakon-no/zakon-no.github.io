@@ -10,3 +10,9 @@
 # Служебное
 Thumbs.db
 *.log
+
+# Локальная сборка Jekyll (не нужна в репозитории)
+.jekyll-gems/
+.jekyll-build/
+_jekyll_cache/
+Gemfile.lock
