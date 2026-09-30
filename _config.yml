@@ -3,11 +3,10 @@ description: "Профессиональный юрист в Белгороде 
 author: "ИП Филин Александр Сергеевич"
 lang: "ru"
 
-# Адрес сайта. Сейчас: https://zakon-no.github.io/afilin/
-# При переходе на свой домен: url: "https://afilin.ru", baseurl: ""
-# При переносе в организацию с одноимённым репозиторием: изменить только baseurl
+# Адрес сайта: https://zakon-no.github.io/
+# При переходе на свой домен: url: "https://afilin.ru"
 url: "https://zakon-no.github.io"
-baseurl: "/afilin"
+baseurl: ""
 
 exclude:
   - README.md

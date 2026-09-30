@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zakon-no.github.io/afilin/sitemap.xml
+Sitemap: https://zakon-no.github.io/sitemap.xml
