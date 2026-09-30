@@ -18,6 +18,8 @@ exclude:
   - ".DS_Store"
 
 markdown: kramdown
+kramdown:
+  auto_ids: false
 
 # Адреса страниц без расширения: /privacy/, /offer/
 permalink: pretty
