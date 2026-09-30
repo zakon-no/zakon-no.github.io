@@ -21,6 +21,8 @@ assets/
 robots.txt
 sitemap.xml
 .nojekyll                                  отключает обработку Jekyll на GitHub Pages
+AGENTS.md                                 правила проекта: стиль, факты, запреты
+.gitignore                                исходники (Контент.docx, документ, папка img/) в репозиторий не попадают
 ```
 
 ## Что нужно заменить перед публикацией
@@ -43,6 +45,20 @@ grep -n "___" index.html privacy.html
 
 Если домен будет собственным, замените `zakon-no.github.io/afilin` на него в `index.html` (тег `canonical`, `og:url`), `privacy.html`, `offer.html`, `robots.txt`, `sitemap.xml`. Для домена добавьте в корень репозитория файл `CNAME` с именем домена.
 
+## Работа с правками
+
+Папка уже является git-репозиторием (ветка `main`, remote `zakon-no/afilin`). Перед каждой правкой вносите изменения отдельным коммитом — так любую правку можно посмотреть и откатить:
+
+```bash
+git status              # что изменено
+git diff                # подробности правок
+git diff assets/css/styles.css   # только стили
+git add -A && git commit -m "описание правки"
+git log --oneline       # история
+```
+
+Правила проекта для ИИ-агентов зафиксированы в `AGENTS.md` — прочитайте этот файл перед любыми изменениями.
+
 ## Локальный просмотр
 
 ```bash
@@ -54,12 +70,15 @@ python3 -m http.server 8000
 
 ## Публикация на GitHub Pages
 
-1. Создайте репозиторий `afilin` в аккаунте `zakon-no`.
-2. Загрузите содержимое папки в корень репозитория (ветка `main`).
-3. Settings → Pages → Build and deployment → Source: **Deploy from a branch**, ветка `main`, папка `/ (root)`.
-4. Через несколько минут сайт будет доступен на `https://zakon-no.github.io/afilin/`.
+Репозиторий `zakon-no/afilin` уже создан локально и подключён как `origin`. Осталось:
 
-Если загружаете через `git`:
+```bash
+git push -u origin main
+```
+
+Затем в GitHub: Settings → Pages → Build and deployment → Source: **Deploy from a branch**, ветка `main`, папка `/ (root)`. Через несколько минут сайт будет доступен на `https://zakon-no.github.io/afilin/`.
+
+Полная последовательность с нуля:
 
 ```bash
 cd "Сайт-визитка"
