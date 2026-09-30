@@ -1,8 +1,9 @@
 /* Филин А.С. — юрист
    Сдержанный деловой стиль: системные шрифты, тонкие линии 1px,
    только accent-цвет, без градиентов, теней и анимации кроме hover.
-   Разметка генерируется Jekyll из Markdown, поэтому секции — это
-   последовательные элементы внутри <main class="container">. */
+   Главная страница собрана из независимых блоков: каждый файл в папке
+   _sections даёт свой <section class="section"> с обёрткой из
+   _includes/section.html. Текст внутри блоков — обычный Markdown. */
 
 :root {
   --bg: #ffffff;
@@ -218,37 +219,72 @@ a:hover { color: #0f2440; }
 
 .btn--sm { padding: 9px 18px; font-size: 14px; }
 
-/* ---------- Основной текст ---------- */
+/* ---------- Блоки главной страницы ----------
+   Разметка: каждый блок — отдельный <section class="section"> из папки
+   _sections, внутри — .container и .section__head / .section__body.
+   Оформление фона: обычный, чередующийся (--alt) и тёмный (--deep). */
 
-main.container { padding-top: 56px; padding-bottom: 88px; }
+.main { display: block; }
 
-main p { margin: 0 0 18px; }
+.main--legal {
+  max-width: calc(var(--wrap) + 56px);
+  margin: 0 auto;
+  padding: 56px 28px 88px;
+}
+
+.section { padding: 72px 0; }
+
+.section:first-of-type { padding-top: 56px; }
+
+.section--alt { background: var(--bg-alt); }
+
+.section--deep { background: var(--bg-deep); color: #fff; }
+
+/* ---------- Шапка блока ---------- */
+
+.section__head { margin: 0 0 34px; }
 
 .eyebrow {
-  margin: 76px 0 0;
-  padding-top: 26px;
-  border-top: 1px solid var(--line);
+  margin: 0 0 12px;
   font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
 }
 
-.eyebrow--first {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-main h2 {
-  margin: 10px 0 22px;
+.section__title {
+  margin: 0 0 14px;
   font-family: var(--font-head);
   font-size: clamp(26px, 3.2vw, 34px);
   font-weight: 400;
   line-height: 1.25;
 }
 
-main h3 {
+.section__lead {
+  margin: 0;
+  max-width: 60ch;
+  color: var(--text-muted);
+  font-size: 18px;
+}
+
+/* ---------- Тёмный блок контактов ---------- */
+
+.section--deep .eyebrow { color: rgba(255, 255, 255, 0.62); }
+.section--deep .section__title { color: #fff; }
+.section--deep .section__lead { color: rgba(255, 255, 255, 0.78); }
+.section--deep a { color: #fff; }
+.section--deep a:hover { color: #cfd9e6; }
+.section--deep h3 { color: #fff; }
+.section--deep .btn--ghost { color: #fff; border-color: rgba(255, 255, 255, 0.45); }
+.section--deep .btn--ghost:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.section--deep .disclaimer { color: rgba(255, 255, 255, 0.62); }
+.section--deep ul li::marker { color: rgba(255, 255, 255, 0.62); }
+
+/* ---------- Текст внутри блока ---------- */
+
+.section__body p { margin: 0 0 18px; }
+
+.section__body h3 {
   margin: 40px 0 14px;
   font-family: var(--font-head);
   font-size: 21px;
@@ -256,53 +292,87 @@ main h3 {
   line-height: 1.3;
 }
 
-.section__lead,
-.lead {
-  color: var(--text-muted);
-  font-size: 18px;
+.section__content > h3:first-child { margin-top: 0; }
+
+.section__body ul,
+.section__body ol { margin: 0 0 22px; padding-left: 22px; }
+
+.section__body li { margin-bottom: 8px; }
+
+.section__body li > ul,
+.section__body li > ol { margin: 12px 0 0; padding-left: 20px; }
+
+.section__body li > ul li,
+.section__body li > ol li { margin-bottom: 6px; }
+
+.section__body ul li::marker { color: var(--text-muted); }
+
+/* ---------- Блок «О юристе»: фото и текст рядом ---------- */
+
+.section__body--about {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 0 40px;
+  align-items: start;
 }
 
 .photo {
   display: block;
-  width: 260px;
-  max-width: 100%;
-  margin: 30px 0 32px;
+  width: 100%;
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
 
-.hero__title {
-  margin: 10px 0 20px;
-  font-family: var(--font-head);
+/* ---------- Квалификация ---------- */
+
+.facts {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.facts > li {
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+
+.facts > li > strong { font-weight: 400; color: var(--accent); }
+
+/* ---------- Главный блок ---------- */
+
+.section--hero .section__head {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.section--hero h1.section__title {
   font-size: clamp(29px, 4vw, 42px);
-  font-weight: 400;
   line-height: 1.2;
 }
 
-.hero__lead {
-  max-width: 44em;
-  color: var(--text-muted);
-  font-size: 18px;
+.section--hero .section__lead { margin: 0 auto; }
+
+.hero__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px 30px;
+  max-width: 900px;
+  margin: 0 auto 34px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
 }
 
-main ul,
-main ol {
-  margin: 0 0 22px;
-  padding-left: 22px;
+.hero__facts > li {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 1px solid var(--accent);
+  font-size: 16px;
 }
-
-main li { margin-bottom: 8px; }
-
-main li > ul,
-main li > ol {
-  margin: 12px 0 0;
-  padding-left: 20px;
-}
-
-main li > ul li,
-main li > ol li { margin-bottom: 6px; }
-
-main ul li::marker { color: var(--text-muted); }
 
 /* ---------- Сетка принципов и направлений ---------- */
 
@@ -403,12 +473,69 @@ main ul li::marker { color: var(--text-muted); }
 
 .steps > li > p:last-child { margin: 0; color: var(--text-muted); }
 
+/* ---------- Медиа-колонка ---------- */
+
+.section__media { max-width: 260px; }
+
+/* ---------- Контакты ---------- */
+
+.section__body--contacts { max-width: 720px; }
+
+.contacts {
+  margin: 0 0 34px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.contacts > li {
+  margin: 0;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contacts > li > strong { font-weight: 400; color: var(--text-muted); }
+
+.contacts a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.section--deep .contacts,
+.section--deep .contacts > li { border-color: rgba(255, 255, 255, 0.22); }
+
+.section--deep .contacts > li > strong { color: rgba(255, 255, 255, 0.62); }
+
+/* ---------- Вопросы ---------- */
+
+.faq {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.faq > li {
+  margin: 0;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.faq > li > p:first-child {
+  margin: 0 0 8px;
+  font-family: var(--font-head);
+  font-size: 19px;
+  color: var(--text);
+}
+
+.faq > li > p:last-child { margin: 0; color: var(--text-muted); }
+
 /* ---------- Врезки ---------- */
 
 .notice {
   margin: 34px 0 0;
   padding: 22px 26px;
-  background: var(--bg-alt);
+  background: var(--bg);
   border-left: 2px solid var(--accent);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
@@ -444,13 +571,17 @@ main ul li::marker { color: var(--text-muted); }
   color: var(--text-muted);
 }
 
-.legal h2 {
+.main--legal h2 {
   margin: 40px 0 16px;
   padding-top: 30px;
   border-top: 1px solid var(--line);
+  font-family: var(--font-head);
+  font-size: clamp(22px, 2.6vw, 27px);
+  font-weight: 400;
+  line-height: 1.3;
 }
 
-.legal h2:first-of-type {
+.main--legal h2:first-of-type {
   margin-top: 0;
   padding-top: 0;
   border-top: 0;
@@ -523,8 +654,6 @@ main ul li::marker { color: var(--text-muted); }
 
 .footer__requisites p { margin: 0; }
 
-.placeholder { color: #9db8d6; }
-
 .footer__legal { padding-top: 22px; }
 
 .footer__disclaimer {
@@ -533,14 +662,6 @@ main ul li::marker { color: var(--text-muted); }
   font-size: 13.5px;
   line-height: 1.6;
   color: #9aa6b3;
-}
-
-.footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 0 14px;
-  font-size: 14px;
 }
 
 .footer__copy { margin: 0; font-size: 13.5px; color: #9aa6b3; }
@@ -586,11 +707,15 @@ main ul li::marker { color: var(--text-muted); }
 
   .container { padding: 0 22px; }
 
-  main.container { padding-top: 40px; padding-bottom: 64px; }
+  .main--legal { padding: 40px 22px 64px; }
 
-  .eyebrow { margin-top: 56px; padding-top: 22px; }
+  .section { padding: 56px 0; }
 
-  .photo { width: 220px; }
+  .section:first-of-type { padding-top: 40px; }
+
+  .section__body--about { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+
+  .section__body--about .photo { max-width: 240px; }
 
   .grid,
   .steps { grid-template-columns: minmax(0, 1fr); gap: 26px; }
@@ -605,11 +730,25 @@ main ul li::marker { color: var(--text-muted); }
 
   .header__phone { font-size: 14px; }
 
+  .section { padding: 44px 0; }
+
+  .section:first-of-type { padding-top: 32px; }
+
+  .section__head { margin-bottom: 26px; }
+
+  .section__title { font-size: 25px; }
+
+  .section--hero h1.section__title { font-size: 27px; }
+
+  .section__lead { font-size: 17px; }
+
   .btn { padding: 12px 20px; font-size: 14.5px; }
 
   .btn + .btn { margin-left: 0; }
 
-  main h2 { font-size: 25px; }
+  .section--hero .btn { display: block; width: 100%; }
+
+  .hero__facts { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 
   .cards > li { padding-left: 0; }
 

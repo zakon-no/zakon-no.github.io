@@ -58,8 +58,15 @@
   </div>
 </header>
 
-<main id="main" class="container{% if page.body_class %} {{ page.body_class }}{% endif %}">
+<main id="main" class="main{% if page.body_class %} main--{{ page.body_class }}{% endif %}">
+{%- if page.sections -%}
+{%- assign blocks = site.sections | sort: "order" -%}
+{%- for s in blocks -%}
+{% include section.html s=s %}
+{%- endfor -%}
+{%- else -%}
 {{ content }}
+{%- endif -%}
 </main>
 
 <footer class="footer">
@@ -88,16 +95,16 @@
     </div>
 
     <div class="footer__requisites">
-      <p>ИП Филин Александр Сергеевич. ОГРНИП: <span class="placeholder">__________</span>, ИНН: <span class="placeholder">__________</span>.</p>
+      <p>ИП Филин Александр Сергеевич. ОГРНИП 318312300086875, ИНН 312118297756. Зарегистрирован в ИФНС по г. Белгороду 30.11.2018.</p>
     </div>
 
     <div class="footer__legal">
       <p class="footer__disclaimer">Информация, размещённая на сайте, не является публичной офертой и не может рассматриваться как заключение какого-либо договора. Перечень услуг приведён справочно и не является публичной офертой. Сайт носит исключительно информационный характер и не является рекламой. Условия оказания услуг определяются договором оказания юридических услуг.</p>
-      <p class="footer__links">
-        <a href="{{ '/privacy/' | relative_url }}">Политика конфиденциальности</a>
-        <span aria-hidden="true">·</span>
+      {%- comment -%}
+        Ссылки на юридические страницы отключены по решению владельца.
+        Файл offer.md сохранён и доступен по адресу /offer/ — вернуть ссылку:
         <a href="{{ '/offer/' | relative_url }}">Отказ от юридической оферты</a>
-      </p>
+      {%- endcomment -%}
       <p class="footer__copy">&copy; <span id="year">2026</span> ИП Филин А.С. Все права защищены.</p>
     </div>
   </div>
