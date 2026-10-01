@@ -62,6 +62,46 @@
     });
   }
 
+  /* Частые вопросы — аккордеон.
+     Текст лежит в Markdown обычным списком `.faq`; здесь каждый пункт
+     превращается в <details>, чтобы работали клавиатура и скринридеры.
+     Если скрипт не выполнится, останется обычный список — вид нормальный. */
+  var faqLists = Array.prototype.slice.call(document.querySelectorAll(".faq"));
+
+  faqLists.forEach(function (list) {
+    var items = Array.prototype.slice.call(list.children);
+
+    items.forEach(function (item) {
+      var blocks = Array.prototype.slice.call(item.children);
+      if (blocks.length < 2) return;
+
+      var details = document.createElement("details");
+      var summary = document.createElement("summary");
+      summary.textContent = blocks[0].textContent.trim();
+
+      var body = document.createElement("div");
+      body.className = "faq__answer";
+      blocks.slice(1).forEach(function (block) {
+        body.appendChild(block);
+      });
+
+      details.appendChild(summary);
+      details.appendChild(body);
+      item.textContent = "";
+      item.appendChild(details);
+
+      details.addEventListener("toggle", function () {
+        if (!details.open) return;
+        items.forEach(function (other) {
+          var otherDetails = other.querySelector("details");
+          if (otherDetails && otherDetails !== details) {
+            otherDetails.open = false;
+          }
+        });
+      });
+    });
+  });
+
   var year = document.getElementById("year");
   if (year) {
     year.textContent = String(new Date().getFullYear());

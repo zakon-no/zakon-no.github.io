@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 anchor: about
 eyebrow: О юристе
 title: Филин Александр Сергеевич
