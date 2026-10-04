@@ -330,21 +330,8 @@ a:hover { color: #0f2440; }
 
 /* ---------- Квалификация ---------- */
 
-.facts {
-  margin: 0 0 10px;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
-}
 
-.facts > li {
-  margin: 0;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 16px;
-}
 
-.facts > li > strong { font-weight: 400; color: var(--accent); }
 
 /* ---------- Главный блок ---------- */
 
@@ -770,19 +757,7 @@ a:hover { color: #0f2440; }
 
 /* ---------- Юридические страницы ---------- */
 
-.legal__title {
-  margin: 0 0 8px;
-  font-family: var(--font-head);
-  font-size: clamp(28px, 3.6vw, 38px);
-  font-weight: 400;
-  line-height: 1.2;
-}
 
-.legal__updated {
-  margin: 0 0 34px;
-  font-size: 14px;
-  color: var(--text-muted);
-}
 
 .main--legal h2 {
   margin: 40px 0 16px;
@@ -800,14 +775,6 @@ a:hover { color: #0f2440; }
   border-top: 0;
 }
 
-.legal__back {
-  display: inline-block;
-  margin-top: 46px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-  width: 100%;
-  font-size: 15px;
-}
 
 /* ---------- Подвал ---------- */
 
@@ -858,14 +825,6 @@ a:hover { color: #0f2440; }
   padding: 0;
   list-style: none;
 }
-
-.footer__requisites {
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  font-size: 14px;
-}
-
-.footer__requisites p { margin: 0; }
 
 .footer__legal { padding-top: 22px; }
 

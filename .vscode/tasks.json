@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Сайт: локальный сервер",
+      "detail": "Отдаёт сайт на http://localhost:8080/ и сам пересобирает его после сохранения index.md",
+      "type": "process",
+      "command": "python3",
+      "args": ["serve.py"],
+      "isBackground": true,
+      "runOptions": "continuous",
+      "runOn": "folderOpen",
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "silent",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Сайт: открыть в браузере",
+      "detail": "Открывает http://localhost:8080/ в вашем браузере",
+      "type": "process",
+      "command": "open",
+      "args": ["http://localhost:8080/"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "silent", "showReuseMessage": false }
+    },
+    {
+      "label": "Сайт: пересобрать сейчас",
+      "detail": "Разовая сборка, если сервер не запущен. Терминал не нужен",
+      "type": "process",
+      "command": "python3",
+      "args": ["build.py"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "silent", "showReuseMessage": false }
+    }
+  ]
+}

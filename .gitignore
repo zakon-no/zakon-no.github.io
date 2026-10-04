@@ -10,12 +10,4 @@
 # Служебное
 Thumbs.db
 *.log
-
-# Результат локальной сборки Jekyll — создаётся сам, в репозиторий не нужен
-_site/
-.jekyll-cache/
-.jekyll-metadata
-.jekyll-gems/
-.jekyll-build/
-_sass/
-vendor/
+__pycache__/
